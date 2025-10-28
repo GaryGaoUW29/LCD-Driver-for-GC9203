@@ -1,6 +1,6 @@
 # Low-Level LCD Driver for GC9203
 
-[Insert a GIF or short video here showing your LCD in action. This is the most important part—show it drawing shapes, refreshing text, or displaying images.]
+[Insert a GIF later]
 
 ## 1. Project Description
 
