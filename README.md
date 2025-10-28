@@ -4,20 +4,20 @@
 
 ## 1. Project Description
 
-[cite_start]This is a low-level C++ driver for the GC9203 LCD controller, written entirely from scratch. [cite_start]It is designed to be lightweight and efficient for memory-constrained microcontrollers like the ESP8266. [cite_start]The entire library was developed in the Arduino IDE by meticulously interpreting the official device datasheet and SPI timing diagrams[cite: 11, 12].
+This is a low-level C++ driver for the GC9203 LCD controller, written entirely from scratch. It is designed to be lightweight and efficient for memory-constrained microcontrollers like the ESP8266. The entire library was developed in the Arduino IDE by meticulously interpreting the official device datasheet and SPI timing diagrams.
 
 ## 2. Tech Stack
 
-* [cite_start]**Language:** C++ 
-* [cite_start]**Hardware:** ESP8266 [cite: 8][cite_start], GC9203 LCD Controller 
-* [cite_start]**Protocol:** SPI (Serial Peripheral Interface) 
+* **Language:** C++
+* **Hardware:** ESP8266, GC9203 LCD Controller
+* **Protocol:** SPI (Serial Peripheral Interface)
 * **Development:** Arduino IDE
 * **Debugging Tools:** Logic Analyzer
 
 ## 3. Core Features
 
 * **From-Scratch Implementation:** No third-party graphics libraries were used. All SPI communication and drawing logic are custom-built.
-* **Optimized Memory Usage:** Implemented a partial refresh algorithm instead of a full framebuffer. [cite_start]This approach reduced RAM usage by over 60%, making it ideal for devices with limited memory.
+* **Optimized Memory Usage:** Implemented a partial refresh algorithm instead of a full framebuffer. This approach reduced RAM usage by over 60%, making it ideal for devices with limited memory.
 * **Graphics Primitives:** A C++ library of essential drawing functions, including `drawLine`, `drawRectangle`, `drawCharacter`, and `fillScreen`.
 * **Gamma Correction:** Integrated a Gamma correction curve to ensure accurate color reproduction and proper contrast, preventing washed-out images.
 
@@ -27,7 +27,7 @@ This project involved significant hardware-level debugging. My primary challenge
 
 ### Challenge 1: Hardware Initialization Failure
 * **Symptom:** The screen remained blank. Despite sending what I believed were the correct initialization commands from the datasheet, the LCD controller failed to initialize.
-* [cite_start]**Solution:** I used a logic analyzer to physically probe and debug the SPI signals (MOSI, MISO, CLK, CS)[cite: 14]. [cite_start]By capturing the traffic, I discovered that my register-level commands [cite: 14] had incorrect timing and formatting. I was able to cross-reference the logic analyzer's output with the datasheet's timing diagrams to correct the initialization sequence and successfully boot the display.
+* **Solution:** I used a logic analyzer to physically probe and debug the SPI signals (MOSI, MISO, CLK, CS). By capturing the traffic, I discovered that my register-level commands had incorrect timing and formatting. I was able to cross-reference the logic analyzer's output with the datasheet's timing diagrams to correct the initialization sequence and successfully boot the display.
 
 ### Challenge 2: Optimizing Refresh Rate (FPS)
 * **Symptom:** The FPS was low when drawing complex shapes, but simply increasing the SPI clock speed (MHz) led to signal instability.
@@ -39,7 +39,7 @@ This project involved significant hardware-level debugging. My primary challenge
 
 ## 5. How to Build and Use
 
-1.  Clone this repository: `git clone [YOUR_REPO_URL]`
+1.  Clone this repository: `git clone https://github.com/GaryGaoUW29/LCD-Driver-for-GC9203.git`
 2.  Open the `.ino` file in the Arduino IDE.
 3.  Ensure you have the ESP8266 board manager installed.
 4.  Update the pin definitions at the top of the main file to match your wiring:
