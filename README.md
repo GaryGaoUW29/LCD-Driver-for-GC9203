@@ -39,13 +39,34 @@ This project involved significant hardware-level debugging. My primary challenge
 
 ## 5. How to Build and Use
 
-1.  Clone this repository: `git clone https://github.com/GaryGaoUW29/LCD-Driver-for-GC9203.git`
-2.  Open the `.ino` file in the Arduino IDE.
-3.  Ensure you have the ESP8266 board manager installed.
-4.  Update the pin definitions at the top of the main file to match your wiring:
-    ```cpp
-    #define PIN_CS   D8
-    #define PIN_DC   D4
-    #define PIN_RST  D3
-    ```
-5.  Compile and upload the code to your ESP8266.
+Place GC9203_Driver.h and GC9203_Driver.cpp in your Arduino project folder.
+
+Include the header: #include "GC9203_Driver.h"
+
+Create a driver instance with your pin definitions:
+
+#define CS_PIN 15
+#define DC_PIN 4
+#define RST_PIN 5
+
+// SCK and MOSI use the default hardware SPI pins
+GC9203_Driver lcd = GC9203_Driver(SCK_PIN, MOSI_PIN, CS_PIN, DC_PIN, RST_PIN);
+
+
+Initialize in setup():
+
+void setup() {
+  lcd.begin();
+}
+
+
+Draw to the framebuffer and call display() to update the screen:
+
+void loop() {
+  lcd.fillRect(20, 20, 50, 50, COLOR_RED);
+  lcd.drawLine(0, 0, 127, 219, COLOR_GREEN);
+
+  // Push all changes to the screen
+  lcd.display();
+}
+
