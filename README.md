@@ -39,34 +39,38 @@ This project involved significant hardware-level debugging. My primary challenge
 
 ## 5. How to Build and Use
 
-Place GC9203_Driver.h and GC9203_Driver.cpp in your Arduino project folder.
+1.  Place `GC9203_Driver.h` and `GC9203_Driver.cpp` in your Arduino project folder.
 
-Include the header: #include "GC9203_Driver.h"
+2.  Include the header:
+    ```cpp
+    #include "GC9203_Driver.h"
+    ```
 
-Create a driver instance with your pin definitions:
+3.  Create a driver instance with your pin definitions:
+    ```cpp
+    #define CS_PIN 15
+    #define DC_PIN 4
+    #define RST_PIN 5
 
-#define CS_PIN 15
-#define DC_PIN 4
-#define RST_PIN 5
+    // SCK and MOSI use the default hardware SPI pins
+    GC9203_Driver lcd = GC9203_Driver(SCK_PIN, MOSI_PIN, CS_PIN, DC_PIN, RST_PIN);
+    ```
 
-// SCK and MOSI use the default hardware SPI pins
-GC9203_Driver lcd = GC9203_Driver(SCK_PIN, MOSI_PIN, CS_PIN, DC_PIN, RST_PIN);
+4.  Initialize in `setup()`:
+    ```cpp
+    void setup() {
+      lcd.begin();
+    }
+    ```
 
-
-Initialize in setup():
-
-void setup() {
-  lcd.begin();
-}
-
-
-Draw to the framebuffer and call display() to update the screen:
-
-void loop() {
-  lcd.fillRect(20, 20, 50, 50, COLOR_RED);
-  lcd.drawLine(0, 0, 127, 219, COLOR_GREEN);
-
-  // Push all changes to the screen
-  lcd.display();
-}
+5.  Draw to the framebuffer and call `display()` to update the screen:
+    ```cpp
+    void loop() {
+      lcd.fillRect(20, 20, 50, 50, COLOR_RED);
+      lcd.drawLine(0, 0, 127, 219, COLOR_GREEN);
+      
+      // Push all changes to the screen
+      lcd.display();
+    }
+    ```
 
