@@ -1,3 +1,8 @@
+// Author: Gary Gao
+// Email: g44gao@uwaterloo.ca
+// Date: 2024-11-3
+// Description: Implementation file for the GC9203 LCD low-level driver.
+
 #include "GC9203_Driver.h"
 
 // Constructor

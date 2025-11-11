@@ -1,3 +1,8 @@
+// Author: Gary Gao
+// Email: g44gao@uwaterloo.ca
+// Date: 2024-11-3
+// Description: Header file for the GC9203 LCD low-level driver.
+
 #ifndef GC9203_DRIVER_H
 #define GC9203_DRIVER_H
 
