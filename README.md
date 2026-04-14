@@ -1,7 +1,5 @@
 # Low-Level LCD Driver for GC9203
 
-[Insert a GIF later]
-
 ## 1. Project Description
 
 This is a low-level C++ driver for the GC9203 LCD controller, written entirely from scratch. It is designed to be lightweight and efficient for memory-constrained microcontrollers like the ESP8266. The entire library was developed in the Arduino IDE by meticulously interpreting the official device datasheet and SPI timing diagrams.
